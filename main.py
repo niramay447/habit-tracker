@@ -1,4 +1,6 @@
 import requests
+from datetime import datetime
+
 
 PIXELA_ENDPOINT = "https://pixe.la/v1/users"
 USERNAME = "niramay"
@@ -31,10 +33,13 @@ response = requests.post(url=graph_endpoint,json=graph_config,headers=headers)
 
 pixel_creation_endpoint = f"{PIXELA_ENDPOINT}/{USERNAME}/graphs/{GRAPH_ID}"
 
+today = datetime.now()
+print(today)
+
 pixel_data = {
-    "date": "20210322",
+    "date": today.strftime("%Y%m%d"),
     "quantity": "9.74",
 }
 
-response = requests.post(url= pixel_creation_endpoint,json=pixel_data,headers=headers)
-print(response.text)
+# response = requests.post(url= pixel_creation_endpoint,json=pixel_data,headers=headers)
+# print(response.text)
